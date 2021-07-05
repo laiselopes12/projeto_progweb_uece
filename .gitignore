@@ -21,13 +21,16 @@ public static void main(String[] args) {
 	System.out.print("Energia: ");
 	total -= scanner.nextDouble();
 	
-	System.out.print("Internet: ");
+	System.out.print("Plano de Internet: ");
 	total -= scanner.nextDouble();
 	
 	System.out.print("Plano Telefônico: ");
 	total -= scanner.nextDouble();
 	
 	System.out.print("Combustível: ");
+	total -= scanner.nextDouble();
+	
+	System.out.print("Alimentação: ");
 	total -= scanner.nextDouble();
 	
 	System.out.print("Outros: ");
