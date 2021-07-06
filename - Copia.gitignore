@@ -1,0 +1,51 @@
+package introducao;
+
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Olá! Insira as informações solicitadas para apuração do Lucro Líquido.");
+
+		Double total = 0.0;
+		Double faturamento = 0.0; 
+		
+		System.out.print("Faturamento do Mês: ");
+		faturamento += scanner.nextDouble();
+		
+		total+=faturamento;
+		
+		System.out.print("Impostos: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Material de Expediente: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Energia: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Plano de Internet: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Plano Telefônico: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Combustível: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Alimentação: ");
+		total -= scanner.nextDouble();
+		
+		System.out.print("Outros: ");
+		total -= scanner.nextDouble();
+		
+		System.out.println("O Lucro Líquido do Mês foi de: " + total);
+		
+		double resultado = total/faturamento*100;
+		
+		System.out.println("Resultado Margem de Faturamenhto: " + resultado);
+	}
+
+}
