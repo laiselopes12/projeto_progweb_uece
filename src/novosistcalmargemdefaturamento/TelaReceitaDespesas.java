@@ -53,8 +53,9 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
         resultadoOutros = new javax.swing.JTextField();
         botaoCalcularLucro = new javax.swing.JButton();
         tituloApuracaoFinal = new javax.swing.JLabel();
-        resultadoApuracaoFinal = new javax.swing.JTextField();
         botaoFinalizar = new javax.swing.JButton();
+        resultadoLucro1 = new javax.swing.JTextField();
+        resultadoMargem1 = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -144,28 +145,30 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
         botaoCalcularLucro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         botaoCalcularLucro.setForeground(new java.awt.Color(204, 0, 0));
         botaoCalcularLucro.setText("Calcular Lucro");
+        botaoCalcularLucro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                botaoCalcularLucroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                botaoCalcularLucroFocusLost(evt);
+            }
+        });
         botaoCalcularLucro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botaoCalcularLucroMouseClicked(evt);
+            }
+        });
+        botaoCalcularLucro.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                botaoCalcularLucroInputMethodTextChanged(evt);
             }
         });
 
         tituloApuracaoFinal.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         tituloApuracaoFinal.setForeground(new java.awt.Color(204, 255, 255));
         tituloApuracaoFinal.setText("O Lucro Líquido do Mês e Margem de Lucro (%) foram, respectivamente:");
-
-        resultadoApuracaoFinal.setBackground(new java.awt.Color(204, 255, 255));
-        resultadoApuracaoFinal.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        resultadoApuracaoFinal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                resultadoApuracaoFinalMouseClicked(evt);
-            }
-        });
-        resultadoApuracaoFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultadoApuracaoFinalActionPerformed(evt);
-            }
-        });
 
         botaoFinalizar.setText("Finalizar");
         botaoFinalizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,43 +183,44 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tituloPlanoDeInternet)
-                        .addGap(69, 69, 69)
-                        .addComponent(resultadoPlanoInternet)
-                        .addGap(18, 18, 18)
-                        .addComponent(tituloCombustivel)
-                        .addGap(41, 41, 41))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(tituloFaturamento2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tituloPlanoDeInternet)
+                                .addGap(69, 69, 69)
+                                .addComponent(resultadoPlanoInternet, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(resultadoFaturamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tituloImpostos1)
+                                        .addComponent(tituloMaterialExpediente))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(resultadoImpostos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(resultadoMaterialExpediente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(tituloEnergia)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resultadoEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(resultadoFaturamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tituloImpostos1)
-                                            .addComponent(tituloMaterialExpediente))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(resultadoImpostos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(resultadoMaterialExpediente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(tituloEnergia)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(resultadoEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tituloPlanTelefonico1)
                                     .addComponent(tituloOutros)
                                     .addComponent(tituloAlimentacao)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addComponent(tituloFaturamento2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(tituloCombustivel)
+                                .addGap(28, 28, 28)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(resultadoCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,13 +234,15 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(tituloApuracaoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(resultadoApuracaoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(resultadoLucro1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(67, 67, 67)
+                            .addComponent(resultadoMargem1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(116, 116, 116)
                             .addComponent(botaoFinalizar)
                             .addGap(26, 26, 26)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -292,10 +298,11 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tituloApuracaoFinal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resultadoApuracaoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoFinalizar))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoFinalizar)
+                    .addComponent(resultadoLucro1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resultadoMargem1))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,7 +336,9 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
         double res = r / total * 100;
         System.out.println(r);
         System.out.println(res);
-
+        resultadoLucro1.setText(String.valueOf(r));
+        resultadoMargem1.setText(String.valueOf(res));
+    
 //System.out.println("total " - "imposto" - "energia" - "materialExpediente" - "planoInternet" - "planoTelefonico" - "combustivel" - "alimentacao" - "outros");
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoCalcularLucroMouseClicked
@@ -338,19 +347,22 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_resultadoCombustivelActionPerformed
 
-    private void resultadoApuracaoFinalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultadoApuracaoFinalMouseClicked
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resultadoApuracaoFinalMouseClicked
-
-    private void resultadoApuracaoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadoApuracaoFinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resultadoApuracaoFinalActionPerformed
-
     private void botaoFinalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoFinalizarMouseClicked
         System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoFinalizarMouseClicked
+
+    private void botaoCalcularLucroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botaoCalcularLucroFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCalcularLucroFocusLost
+
+    private void botaoCalcularLucroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botaoCalcularLucroFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCalcularLucroFocusGained
+
+    private void botaoCalcularLucroInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_botaoCalcularLucroInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCalcularLucroInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -395,11 +407,12 @@ public class TelaReceitaDespesas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField resultadoAlimentacao;
-    private javax.swing.JTextField resultadoApuracaoFinal;
     private javax.swing.JTextField resultadoCombustivel;
     private javax.swing.JTextField resultadoEnergia;
     private javax.swing.JTextField resultadoFaturamento;
     private javax.swing.JTextField resultadoImpostos;
+    private javax.swing.JTextField resultadoLucro1;
+    private javax.swing.JTextField resultadoMargem1;
     private javax.swing.JTextField resultadoMaterialExpediente;
     private javax.swing.JTextField resultadoOutros;
     private javax.swing.JTextField resultadoPlanoInternet;
